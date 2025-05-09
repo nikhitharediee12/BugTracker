@@ -11,28 +11,14 @@ public class Bug {
         this.priority = priority;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
+    public int getId() { return id; }
+    public String getDescription() { return description; }
+    public String getStatus() { return status; }
+    public String getPriority() { return priority; }
 
     @Override
     public String toString() {
-        return "Bug ID: " + id + "\nDescription: " + description + "\nStatus: " + status + "\nPriority: " + priority;
+        return "Bug ID: " + id + "\nDescription: " + description +
+               "\nStatus: " + status + "\nPriority: " + priority;
     }
 }

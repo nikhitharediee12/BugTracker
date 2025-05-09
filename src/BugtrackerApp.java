@@ -1,10 +1,9 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class BugtrackerApp {
+public class BugTrackerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        BugTracker bugTracker = new BugTracker();
 
         while (true) {
             System.out.println("Bug Tracker:");
@@ -14,7 +13,7 @@ public class BugtrackerApp {
             System.out.println("4. Exit");
             System.out.print("Choose an option: ");
             int option = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline
+            scanner.nextLine(); // consume newline
 
             switch (option) {
                 case 1:
@@ -22,14 +21,13 @@ public class BugtrackerApp {
                     String description = scanner.nextLine();
                     System.out.print("Enter bug priority (Low, Medium, High): ");
                     String priority = scanner.nextLine();
-                    bugTracker.addBug(description, priority);
+                    BugOperations.addBug(description, priority, "Open");
                     System.out.println("Bug added successfully!");
                     break;
-
                 case 2:
-                    List<Bug> bugs = bugTracker.getBugs();
+                    List<Bug> bugs = BugOperations.getAllBugs();
                     if (bugs.isEmpty()) {
-                        System.out.println("No bugs to display.");
+                        System.out.println("No bugs found.");
                     } else {
                         for (Bug bug : bugs) {
                             System.out.println(bug);
@@ -37,24 +35,21 @@ public class BugtrackerApp {
                         }
                     }
                     break;
-
                 case 3:
                     System.out.print("Enter bug ID to update: ");
                     int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline
+                    scanner.nextLine(); // consume newline
                     System.out.print("Enter new status (Open, In Progress, Closed): ");
                     String status = scanner.nextLine();
-                    bugTracker.updateBugStatus(id, status);
+                    BugOperations.updateBugStatus(id, status);
                     System.out.println("Bug status updated successfully!");
                     break;
-
                 case 4:
                     System.out.println("Exiting Bug Tracker...");
                     scanner.close();
-                    System.exit(0);
-
+                    return;
                 default:
-                    System.out.println("Invalid option, please try again.");
+                    System.out.println("Invalid option, try again.");
             }
         }
     }
